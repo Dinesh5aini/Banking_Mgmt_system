@@ -2,6 +2,7 @@ from Admin_signup_login import login_signup
 from Admin_dashboard import Admin_dashboard
 
 class Banking_mnmt:
+    
     def main(self):
         obj = login_signup()
         logged_in = obj.admin_login()
