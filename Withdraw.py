@@ -5,6 +5,7 @@ class Withdrawal:
     def withdrawal(self):
         print("Welcome to the withdrawal page")
         account_no = int(input("Enter your account number: "))
+        digital_sign = input("Enter your digital signature: ")
         filename = "customer.csv"
         with open(filename, "r") as file:
             reader = csv.reader(file)
@@ -12,6 +13,9 @@ class Withdrawal:
             for row in rows:
                 if row:
                     if account_no == int(row[0]):
+                        if digital_sign != row[4]:
+                            print("Invalid digital signature")
+                            return
                         withdrawal_amount = int(input("Enter the amount to withdraw: "))
                         if withdrawal_amount > int(row[2]):
                             print("Insufficient funds")
